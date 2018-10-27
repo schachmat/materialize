@@ -1,0 +1,26 @@
+#!/bin/sh
+
+sudo apt-get -y build-dep dwm
+
+sudo apt-get -y install \
+	lightdm \
+	suckless-tools \
+	zzuf
+
+if cd $HOME/code/dwm; then
+	git pull
+else
+	git clone https://github.com/schachmat/dwm $HOME/code/dwm
+	cd $HOME/code/dwm
+fi
+git checkout config
+make
+make PREFIX=$HOME install
+cd -
+
+sudo mkdir -p /etc/lightdm/lightdm.conf.d/
+cat <<DOG | sudo tee /etc/lightdm/lightdm.conf.d/autologin.conf >/dev/null
+[Seat:*]
+autologin-user=${USER}
+DOG
+
