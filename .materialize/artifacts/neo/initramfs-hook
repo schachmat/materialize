@@ -1,0 +1,37 @@
+#!/bin/sh
+
+PREREQ="keymap"
+
+prereqs()
+{
+	echo "$PREREQ"
+}
+
+case $1 in
+	prereqs)
+		prereqs
+		exit 0
+		;;
+esac
+
+# Hook to load keymaps into the initramfs if requested by KEYMAP="y"
+if [ "$KEYMAP" != "y" ] && [ "$KEYMAP" != "Y" ]; then
+	exit 0
+fi
+
+# Step 1 - Basic tools
+if [ ! -x /bin/loadkeys ]; then
+	echo "loadkeys is missing. Please install the 'kbd' package."
+	exit 1
+fi
+if [ ! -x /bin/setupcon ]; then
+	echo "setupcon is missing. Please install the 'console-setup' package."
+	exit 1
+fi
+
+. /usr/share/initramfs-tools/hook-functions
+
+if ! cp /etc/console-setup/boottime.kmap.gz ${DESTDIR}/etc/boottime.kmap.gz ; then
+	echo "Error copying keymap file /etc/console-setup/boottime.kmap.gz"
+	exit 1
+fi

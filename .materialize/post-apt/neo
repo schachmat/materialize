@@ -1,0 +1,23 @@
+#!/bin/sh
+
+sudo apt-get -y install \
+	console-setup \
+	kbd \
+	keyboard-configuration \
+	zzuf
+
+# keymap
+sudo mv /etc/default/keyboard{,.bak}
+sudo dpkg-reconfigure --frontend=noninteractive keyboard-configuration
+
+gzip <$HOME/.materialize/artifacts/neo/boottime-kmap | sudo tee /etc/console-setup/boottime.kmap.gz >/dev/null
+
+sudo cp $HOME/.materialize/artifacts/neo/initramfs-hook /etc/initramfs-tools/hooks/neo
+sudo chmod +x /etc/initramfs-tools/hooks/neo
+
+sudo sed -i 's|^KEYMAP=.*$|KEYMAP=y|' /etc/initramfs-tools/initramfs.conf
+if ! grep -q '^KEYMAP=y$' /etc/initramfs-tools/initramfs.conf; then
+	sudo sed -i '$ a\KEYMAP=y' /etc/initramfs-tools/initramfs.conf >/dev/null
+fi
+
+sudo update-initramfs -u -k all 2>&1 | grep -v '^WARNING: Unknown key type'

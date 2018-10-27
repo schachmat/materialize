@@ -1,0 +1,48 @@
+#! /bin/sh
+
+set -e
+
+run_scripts()
+{
+	echo running "$1" scripts...
+	for script in "$HOME"/.materialize/"$1"/*; do
+		[ -x "$script" ] || continue
+		. $script
+	done
+}
+
+export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
+
+run_scripts pre-apt
+
+# apt config and installation
+sudo apt-get update
+
+sudo apt-get -y install \
+	aptitude \
+	golang-go \
+	htop \
+	silversearcher-ag \
+	suckless-tools \
+	tmux \
+	tree \
+	vim \
+	xbacklight \
+	zzuf
+#	automake \
+#	fonts-font-awesome \
+#	libfontconfig1-dev \
+#	libxft-dev \
+#	libxinerama-dev \
+#	libxrandr-dev \
+
+run_scripts post-apt
+
+# select editor
+echo 'SELECTED_EDITOR="/usr/bin/vim.basic"' > $HOME/.selected_editor
+
+# st
+
+# install latest dmenu
+
+run_scripts bottom

@@ -1,0 +1,48 @@
+[user]
+	name = Markus Teich
+	email = markus.teich@stusta.mhn.de
+
+[core]
+	editor = vim
+	autocrlf = input
+
+[fetch]
+	fsckObjects = true
+[receive]
+	fsckObjects = true
+[transfer]
+	fsckObjects = true
+
+[url "git@github.com:"]
+pushInsteadOf = https://github.com/
+
+[diff]
+	algorithm = patience
+[merge]
+	tool = vimdiff
+[pack]
+	threads = 0
+[push]
+	default = upstream
+[rebase]
+	autosquash = true
+[rerere]
+	enabled = true
+
+[color]
+	ui = auto
+[color "decorate"]
+	branch = red
+	remoteBranch = yellow
+	HEAD = red bold
+	stash = magenta
+	tag = green
+[alias]
+	ci = commit
+	co = checkout
+	st = status
+	treelog = log --pretty=format:'%Cblue%h %C(green bold)%<(12,trunc)%an%C(auto)%d%Creset %s' --graph -74
+	unstage = reset HEAD --
+
+[include]
+	path = ~/.materialize/artifacts/.gitconfig

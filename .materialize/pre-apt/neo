@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# setup keyboard-configuration for neo
+cat << DOG |
+keyboard-configuration	keyboard-configuration/layoutcode	string	de
+keyboard-configuration	keyboard-configuration/layout	select	German
+keyboard-configuration	keyboard-configuration/variantcode	string	neo
+keyboard-configuration	keyboard-configuration/variant	select	German - German (Neo 2)
+keyboard-configuration	keyboard-configuration/xkb-keymap	select	de(neo)
+DOG
+sudo debconf-set-selections
