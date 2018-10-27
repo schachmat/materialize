@@ -7,7 +7,7 @@ sudo apt-get -y install \
 	zzuf
 
 # keymap
-sudo mv /etc/default/keyboard{,.bak}
+sudo mv /etc/default/keyboard /etc/default/keyboard.bak
 sudo dpkg-reconfigure --frontend=noninteractive keyboard-configuration
 
 gzip <$HOME/.materialize/artifacts/neo/boottime-kmap | sudo tee /etc/console-setup/boottime.kmap.gz >/dev/null
