@@ -11,6 +11,11 @@ set nocompatible
 " Load any materialize plugins
 silent! source $HOME/.materialize/artifacts/vim/*.vim
 
+" Store all temp files in ~/tmp/vim
+set backupdir=~/tmp//
+set directory=~/tmp//
+set undodir=~/tmp//
+
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
