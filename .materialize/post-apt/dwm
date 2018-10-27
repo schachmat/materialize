@@ -7,6 +7,19 @@ sudo apt-get -y install \
 	suckless-tools \
 	zzuf
 
+# tabbed
+if cd $HOME/code/tabbed; then
+	git pull
+else
+	git clone https://github.com/schachmat/tabbed $HOME/code/tabbed
+	cd $HOME/code/tabbed
+fi
+git checkout config
+make
+make PREFIX=$HOME install
+cd -
+
+# dwm
 if cd $HOME/code/dwm; then
 	git pull
 else
@@ -18,9 +31,9 @@ make
 make PREFIX=$HOME install
 cd -
 
+# lightdm
 sudo mkdir -p /etc/lightdm/lightdm.conf.d/
 cat <<DOG | sudo tee /etc/lightdm/lightdm.conf.d/autologin.conf >/dev/null
 [Seat:*]
 autologin-user=${USER}
 DOG
-
