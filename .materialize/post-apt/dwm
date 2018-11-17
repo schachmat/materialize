@@ -5,7 +5,12 @@ sudo apt-get -y build-dep dwm
 sudo apt-get -y install \
 	lightdm \
 	suckless-tools \
+	xserver-xorg-input-libinput \
 	zzuf
+
+# touchpad
+sudo mkdir -p /etc/X11/xorg.conf.d
+sudo cp $HOME/.materialize/artifacts/dwm/95-touchpad.conf /etc/X11/xorg.conf.d/
 
 # tabbed
 if cd $HOME/code/tabbed; then
