@@ -81,8 +81,20 @@ URxvt.saveLines: 42000
 ! skip lines if there is too much of them coming in anally
 URxvt.skipScroll: true
 
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
 ! Xft: DejaVu fonts
-!  Fedora/debian packages: dejavu-sans-mono-fonts/ttf-dejavu 
+!  Fedora/debian packages: dejavu-sans-mono-fonts/ttf-dejavu
 URxvt.font: xft:DejaVu Sans Mono:pixelsize=25:antialias=true:hinting=true
 URxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=25:antialias=true:hinting=true
 ! Xft: Terminus fonts
