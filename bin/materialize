@@ -21,6 +21,7 @@ sudo apt-get update
 sudo apt-get -y install \
 	aptitude \
 	build-essential \
+	feh \
 	golang-go \
 	htop \
 	silversearcher-ag \

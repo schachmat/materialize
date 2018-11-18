@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec feh -Z --scale-down --action1 "link %f good%N" --action "echo %f >>torm" "$@" &>/dev/null &
