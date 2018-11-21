@@ -1,3 +1,33 @@
 $include /etc/inputrc
 
+# man 3 readline
+
+# Allow to override default keybindings
+set bind-tty-special-chars off
+
+# PageUp and PageDown for prefixed history search
+# Remove the "substring-" if exact prefix is preferred.
+"\e[5~": history-substring-search-backward
+"\e[6~": history-substring-search-forward
+
+# Shift+left and Shift-right for moving between words
+"\e[d": backward-word
+"\e[c": forward-word
+
+# Don't delete the whole path, just one directory level at a time.
+"\C-w": unix-filename-rubout
+
+# try to enable the application keypad when it is called. Some systems
+# need this to enable the arrow keys.
 set enable-keypad on
+
+# case insensitive and _- agnostic completion
+set completion-ignore-case on
+set completion-map-case on
+
+# show possible completions right away
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# Prevent pasting newlines from being interpreted as wanting to execute
+set enable-bracketed-paste on
