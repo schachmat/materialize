@@ -1,6 +1,4 @@
-#!/bin/sh
-
-PATH="$HOME/bin:$PATH"
+#!/bin/bash --login
 
 # screw java
 wmname LG3D
