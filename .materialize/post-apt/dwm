@@ -16,6 +16,7 @@ sudo cp $HOME/.materialize/artifacts/dwm/95-touchpad.conf /etc/X11/xorg.conf.d/
 
 # tabbed
 if cd $HOME/code/tabbed; then
+	git checkout config
 	git pull
 else
 	git clone https://github.com/schachmat/tabbed $HOME/code/tabbed
@@ -28,6 +29,7 @@ cd -
 
 # dwm
 if cd $HOME/code/dwm; then
+	git checkout config
 	git pull
 else
 	git clone https://github.com/schachmat/dwm $HOME/code/dwm
