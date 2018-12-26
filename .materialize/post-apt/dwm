@@ -3,9 +3,12 @@
 sudo apt-get -y build-dep dwm
 
 sudo apt-get -y install \
+	alsa-utils \
 	fonts-dejavu \
 	fonts-materialdesignicons-webfont \
 	lightdm \
+	pulseaudio \
+	pavucontrol \
 	suckless-tools \
 	xserver-xorg-input-libinput \
 	zzuf
