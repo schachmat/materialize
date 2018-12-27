@@ -32,6 +32,9 @@ make
 make PREFIX=$HOME install
 cd -
 
+# go dwm status
+GOPATH="$HOME/code/go" go get -u github.com/schachmat/gods
+
 # dwm
 if cd $HOME/code/dwm; then
 	git checkout config
