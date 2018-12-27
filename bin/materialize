@@ -43,6 +43,7 @@ run_scripts post-apt
 # select editor
 echo 'SELECTED_EDITOR="/usr/bin/vim.basic"' > $HOME/.selected_editor
 mkdir -p $HOME/tmp/vim
+sudo update-alternatives --set editor /usr/bin/vim.basic
 
 # st
 
