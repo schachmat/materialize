@@ -9,9 +9,11 @@ sudo apt-get -y install \
 	lightdm \
 	pulseaudio \
 	pavucontrol \
+	psmisc \
 	suckless-tools \
 	xserver-xorg-input-libinput \
 	zzuf
+# psmisc for killall
 
 # touchpad
 sudo mkdir -p /etc/X11/xorg.conf.d
