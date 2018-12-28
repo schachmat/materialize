@@ -102,6 +102,9 @@ URxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=25:antialias=true:hinting=tr
 !URxvt*font: xft:terminus:pixelsize=15
 !URxvt*boldFont: xft:terminus:bold:pixelsize=15
 
+! set x window urgency hint on bell character
+URxvt.urgentOnBell: true
+
 ! scrollbar - true (default) or false
 URxvt.scrollBar: false
 
