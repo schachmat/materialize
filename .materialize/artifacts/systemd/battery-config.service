@@ -1,0 +1,10 @@
+[Unit]
+Description=Set Battery Charge Thresholds
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'echo 80 | tee /sys/class/power_supply/*/charge_stop_threshold >/dev/null'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
