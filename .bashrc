@@ -85,6 +85,9 @@ alias a="ag --color-path 32 --color-line-number 33 --pager 'less --quit-if-one-s
 alias g="git"
 alias l="ls -laBhF$CALWAYS"
 
+# common typos
+alias dkpg="dpkg"
+
 # common argument combinations
 alias egrep="egrep$CAUTO"
 alias fgrep="fgrep$CAUTO"
