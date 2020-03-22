@@ -27,6 +27,7 @@ sudo apt-get -y install \
 	htop \
 	silversearcher-ag \
 	suckless-tools \
+	strace \
 	tmux \
 	tree \
 	vim \
