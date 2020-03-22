@@ -6,10 +6,30 @@ sudo apt-get -y install \
 	keyboard-configuration \
 	zzuf
 
-# keymap
-sudo mv /etc/default/keyboard /etc/default/keyboard.bak
-sudo dpkg-reconfigure --frontend=noninteractive keyboard-configuration
+# apply xkb hacks
+for file in rules/base rules/base.xml rules/base.lst rules/evdev rules/evdev.xml rules/evdev.lst types/complete; do
+	src=$HOME/.materialize/artifacts/neo/xkb/$file
+	dst=/usr/share/X11/xkb/$file
+	# If we know the file from /usr, replace it with our own
+	cmp --silent $src.dpkg-dist $dst \
+		&& sudo cp $src $dst
 
+	if ! cmp $src $dst; then
+		echo ffs, xkb-data was updated again. update ~/.materialize/artifacts/neo/xkb/ and try again...
+		exit 1
+	fi
+done
+sudo cp $HOME/.materialize/artifacts/neo/xkb/symbols/mate /usr/share/X11/xkb/symbols/mate
+sudo cp $HOME/.materialize/artifacts/neo/xkb/types/mate /usr/share/X11/xkb/types/mate
+
+# keymap
+sudo mv /etc/default/keyboard /etc/default/keyboard.mate
+sudo dpkg-reconfigure --frontend=noninteractive keyboard-configuration
+cmp --silent /etc/default/keyboard /etc/default/keyboard.mate \
+	&& sudo rm /etc/default/keyboard.mate \
+	|| sudo mv /etc/default/keyboard.mate /etc/default/keyboard.bak
+
+# configure boottime keymap
 gzip <$HOME/.materialize/artifacts/neo/boottime-kmap | sudo tee /etc/console-setup/boottime.kmap.gz >/dev/null
 
 sudo cp $HOME/.materialize/artifacts/neo/initramfs-hook /etc/initramfs-tools/hooks/neo

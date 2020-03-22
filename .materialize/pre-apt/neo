@@ -2,10 +2,13 @@
 
 # setup keyboard-configuration for neo
 cat << DOG |
+keyboard-configuration	keyboard-configuration/xkb-keymap	select	de(neo)
 keyboard-configuration	keyboard-configuration/layoutcode	string	de
 keyboard-configuration	keyboard-configuration/layout	select	German
 keyboard-configuration	keyboard-configuration/variantcode	string	neo
 keyboard-configuration	keyboard-configuration/variant	select	German - German (Neo 2)
-keyboard-configuration	keyboard-configuration/xkb-keymap	select	de(neo)
+keyboard-configuration	keyboard-configuration/optionscode	string	altwin:swap_lalt_lwin,mate:neo_hacks
+keyboard-configuration	keyboard-configuration/unsupported_config_options	boolean	true
+keyboard-configuration	keyboard-configuration/unsupported_options	boolean	true
 DOG
 sudo debconf-set-selections

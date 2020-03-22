@@ -1,0 +1,70 @@
+partial default xkb_types "default" {
+
+    virtual_modifiers LevelThree,ScrollLock,LevelFive,Super;
+
+    type "CUSTOM_NEO_HACKS_MATE" {
+      // This is based on EIGHT_LEVEL_ALPHABETIC_LEVEL_FIVE_LOCK
+
+      // Level5-Lock is implemented by using NumLock, because a real modifier
+      // is required.
+
+        modifiers = Shift + Lock + LevelThree + NumLock + LevelFive + Super;
+
+        map[None]                                    = Level1;
+        map[Shift]                                   = Level2;
+        map[LevelThree]                              = Level3;
+        map[LevelThree+Shift]                        = Level4;
+
+        map[LevelFive]                               = Level5;
+        map[LevelFive+Shift]                         = Level6;
+
+        map[NumLock]                                 = Level5;
+        map[NumLock+Shift]                           = Level6;
+
+        map[NumLock+LevelFive]                       = Level1;
+        map[NumLock+LevelFive+Shift]                 = Level2;
+        map[NumLock+LevelFive+LevelThree]            = Level3;
+        map[NumLock+LevelFive+LevelThree+Shift]      = Level4;
+
+        // Lock interchanges Level1 and Level2
+        map[Lock]                                    = Level2;
+        map[Lock+Shift]                              = Level1;
+        map[Lock+LevelThree]                         = Level3;
+        map[Lock+LevelThree+Shift]                   = Level4;
+
+        map[Lock+LevelFive]                          = Level5;
+        map[Lock+LevelFive+Shift]                    = Level6;
+
+        map[Lock+NumLock]                            = Level5;
+        map[Lock+NumLock+Shift]                      = Level6;
+
+        map[Lock+NumLock+LevelFive]                  = Level2;
+        map[Lock+NumLock+LevelFive+Shift]            = Level1;
+        map[Lock+NumLock+LevelFive+LevelThree]       = Level4;
+        map[Lock+NumLock+LevelFive+LevelThree+Shift] = Level3;
+
+        // Map that super key
+        map[Super]              = Level7;
+        map[Lock+Super]         = Level7;
+        map[NumLock+Super]      = Level7;
+        map[Lock+NumLock+Super] = Level7;
+
+        map[Shift+Super]              = Level8;
+        map[Shift+Lock+Super]         = Level8;
+        map[Shift+NumLock+Super]      = Level8;
+        map[Shift+Lock+NumLock+Super] = Level8;
+
+        preserve[LevelFive+Shift] = Shift;
+        preserve[NumLock+Shift] = Shift;
+        preserve[Super+Shift] = Shift;
+
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+        level_name[Level3] = "Alt Base";
+        level_name[Level4] = "Shift Alt";
+        level_name[Level5] = "X";
+        level_name[Level6] = "X Shift";
+        level_name[Level7] = "Super";
+        level_name[Level8] = "Shift Super";
+    };
+};
