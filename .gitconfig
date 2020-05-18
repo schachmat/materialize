@@ -14,7 +14,10 @@
 	fsckObjects = true
 
 [url "git@github.com:"]
-pushInsteadOf = https://github.com/
+	pushInsteadOf = https://github.com/
+
+[url "ssh://suckless:/gitrepos/"]
+	pushInsteadOf = https://git.suckless.org/
 
 [diff]
 	algorithm = patience
