@@ -49,3 +49,5 @@
 
 [include]
 	path = ~/.materialize/artifacts/.gitconfig
+[pull]
+	ff = only
