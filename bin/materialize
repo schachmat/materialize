@@ -31,8 +31,7 @@ sudo apt-get -y install \
 	tmux \
 	tree \
 	vim \
-	xbacklight \
-	zzuf
+	xbacklight
 #	automake \
 #	fonts-font-awesome \
 #	libfontconfig1-dev \

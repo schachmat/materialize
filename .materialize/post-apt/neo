@@ -3,8 +3,7 @@
 sudo apt-get -y install \
 	console-setup \
 	kbd \
-	keyboard-configuration \
-	zzuf
+	keyboard-configuration
 
 # apply xkb hacks
 for file in rules/base rules/base.xml rules/base.lst rules/evdev rules/evdev.xml rules/evdev.lst types/complete; do

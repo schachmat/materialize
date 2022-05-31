@@ -12,8 +12,7 @@ sudo apt-get -y install \
 	pavucontrol \
 	psmisc \
 	suckless-tools \
-	xserver-xorg-input-libinput \
-	zzuf
+	xserver-xorg-input-libinput
 # psmisc for killall
 
 # touchpad
