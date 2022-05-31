@@ -33,7 +33,7 @@ make PREFIX=$HOME install
 cd -
 
 # go dwm status
-GOPATH="$HOME/code/go" go get -u github.com/schachmat/gods
+GOPATH="$HOME/code/go" go install github.com/schachmat/gods@latest
 
 # dwm
 if cd $HOME/code/dwm; then
