@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # for alacritty: install xclip, cargo, cmake
-sudo apt-get -y install rxvt-unicode-256color
+sudo apt-get -y install rxvt-unicode
 
 
 mkdir -p $HOME/.urxvt/ext
