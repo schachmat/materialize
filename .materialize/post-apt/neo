@@ -6,7 +6,7 @@ sudo apt-get -y install \
 	keyboard-configuration
 
 # apply xkb hacks
-for file in rules/base rules/base.xml rules/base.lst rules/evdev rules/evdev.xml rules/evdev.lst types/complete; do
+for file in rules/base rules/base.lst rules/base.xml rules/evdev rules/evdev.lst rules/evdev.xml types/complete; do
 	src=$HOME/.materialize/artifacts/neo/xkb/$file
 	dst=/usr/share/X11/xkb/$file
 	# If we know the file from /usr, replace it with our own
