@@ -13,6 +13,7 @@ else
 	make
 	sed -i "s|BLUE|$(echo -e 'RED\nGREEN\nYELLOW\nBLUE\nMAGENTA' | shuf | head -n 1)|" config.h
 fi
+make clean
 make
 make PREFIX=$HOME install
 cd -
