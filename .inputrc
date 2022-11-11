@@ -12,7 +12,9 @@ set bind-tty-special-chars off
 
 # Shift+left and Shift-right for moving between words
 "\e[d": backward-word
+"\e[1;2D": backward-word
 "\e[c": forward-word
+"\e[1;2C": forward-word
 
 # Don't delete the whole path, just one directory level at a time.
 "\C-w": unix-filename-rubout
