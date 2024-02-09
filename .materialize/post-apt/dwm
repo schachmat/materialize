@@ -8,7 +8,6 @@ sudo apt-get -y install \
 	fonts-materialdesignicons-webfont \
 	lightdm \
 	mpv \
-	pulseaudio \
 	pavucontrol \
 	psmisc \
 	suckless-tools \
