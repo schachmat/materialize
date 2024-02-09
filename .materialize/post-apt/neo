@@ -28,6 +28,15 @@ cmp --silent /etc/default/keyboard /etc/default/keyboard.mate \
 	&& sudo rm /etc/default/keyboard.mate \
 	|| sudo mv /etc/default/keyboard.mate /etc/default/keyboard.bak
 
+# gnome configuration
+if dpkg -s gsettings-desktop-schemas &>/dev/null; then
+	gsettings set org.gnome.desktop.input-sources xkb-options "['mate:neo_hacks', 'altwin:swap_lalt_lwin']"
+	gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
+	gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "[]"
+	gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Super>Tab']"
+	gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Super>Tab']"
+fi
+
 # configure boottime keymap
 gzip <$HOME/.materialize/artifacts/neo/boottime-kmap | sudo tee /etc/console-setup/boottime.kmap.gz >/dev/null
 
