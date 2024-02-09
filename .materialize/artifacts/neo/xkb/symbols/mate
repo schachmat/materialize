@@ -79,7 +79,7 @@ xkb_symbols "neo_hacks" {
     type[Group1] = "CUSTOM_NEO_HACKS_MATE"
 ,symbols[Group1] = [ odiaeresis,              Odiaeresis,              dollar,                  U03F5,                   Tab,                     Tab,                     NoSymbol,                NoSymbol                 ]
 ,actions[Group1] = [ NoAction(),              NoAction(),              NoAction(),              NoAction(),              NoAction(),              NoAction()
-                   , Redirect(key=<TAB>,  clearmods=all, mods=Control+Shift)
+                   , Redirect(key=<PGUP>, clearmods=all, mods=Control)
                    , Redirect(key=<PGUP>, clearmods=all, mods=Control+Shift)
                    ]
       };
@@ -87,7 +87,7 @@ xkb_symbols "neo_hacks" {
     type[Group1] = "CUSTOM_NEO_HACKS_MATE"
 ,symbols[Group1] = [ adiaeresis,              Adiaeresis,              bar,                     Greek_eta,               Insert,                  Insert,                  NoSymbol,                NoSymbol                 ]
 ,actions[Group1] = [ NoAction(),              NoAction(),              NoAction(),              NoAction(),              NoAction(),              NoAction()
-                   , Redirect(key=<TAB>,  clearmods=all, mods=Control)
+                   , Redirect(key=<PGDN>, clearmods=all, mods=Control)
                    , Redirect(key=<PGDN>, clearmods=all, mods=Control+Shift)
                    ]
       };
