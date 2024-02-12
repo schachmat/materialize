@@ -35,6 +35,7 @@ if dpkg -s gsettings-desktop-schemas &>/dev/null; then
 	gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "[]"
 	gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Super>Tab']"
 	gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Super>Tab']"
+	gsettings set org.gnome.mutter overlay-key ""
 fi
 
 # configure boottime keymap
