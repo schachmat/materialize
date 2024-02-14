@@ -9,6 +9,7 @@ sudo apt-get -y install \
 	lightdm \
 	mpv \
 	pavucontrol \
+	pipewire-audio \
 	psmisc \
 	suckless-tools \
 	xserver-xorg-input-libinput
