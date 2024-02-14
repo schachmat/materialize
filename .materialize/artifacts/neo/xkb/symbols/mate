@@ -91,7 +91,14 @@ xkb_symbols "neo_hacks" {
                    , Redirect(key=<PGDN>, clearmods=all, mods=Control+Shift)
                    ]
       };
-//    key <AB04> { [ p,                       P,                       asciitilde,              Greek_pi,                Return,                  Return,                  Greek_PI,                NoSymbol                 ] };
+      key <AB04> {
+    type[Group1] = "CUSTOM_NEO_HACKS_MATE"
+,symbols[Group1] = [ p,                       P,                       asciitilde,              Greek_pi,                Return,                  Return,                  NoSymbol,                NoSymbol                 ]
+,actions[Group1] = [ NoAction(),              NoAction(),              NoAction(),              NoAction(),              NoAction(),              NoAction()
+                   , Redirect(key=<AB04>, clearmods=all, mods=Alt)
+                   , NoAction()
+                   ]
+      };
       key <AB05> {
     type[Group1] = "CUSTOM_NEO_HACKS_MATE"
 ,symbols[Group1] = [ z,                       Z,                       grave,                   Greek_zeta,              Undo,                    Redo,                    NoSymbol,                NoSymbol                 ]
