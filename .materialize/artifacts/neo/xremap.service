@@ -1,0 +1,9 @@
+[Unit]
+Description=xremap service
+After=default.target
+
+[Service]
+ExecStart=/usr/local/bin/xremap --watch=device,config /etc/xremap.yml
+
+[Install]
+WantedBy=default.target

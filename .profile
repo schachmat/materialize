@@ -29,4 +29,4 @@ fi
 export EDITOR="vim"
 
 export GOPATH="$HOME/code/go"
-export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin:$HOME/.cargo/bin"

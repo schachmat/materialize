@@ -1,25 +1,21 @@
 #!/bin/sh
 
 sudo apt-get -y install \
+	cargo \
 	console-setup \
 	kbd \
 	keyboard-configuration
 
-# apply xkb hacks
-for file in rules/base rules/base.lst rules/base.xml rules/evdev rules/evdev.lst rules/evdev.xml types/complete; do
-	src=$HOME/.materialize/artifacts/neo/xkb/$file
-	dst=/usr/share/X11/xkb/$file
-	# If we know the file from /usr, replace it with our own
-	cmp --silent $src.dpkg-dist $dst \
-		&& sudo install --mode=644 $src $dst
+cargo install --locked xremap --features gnome
 
-	if ! cmp $src $dst; then
-		echo ffs, xkb-data was updated again. update ~/.materialize/artifacts/neo/xkb/ and try again...
-		exit 1
-	fi
-done
-sudo install --mode=644 $HOME/.materialize/artifacts/neo/xkb/symbols/mate /usr/share/X11/xkb/symbols/mate
-sudo install --mode=644 $HOME/.materialize/artifacts/neo/xkb/types/mate /usr/share/X11/xkb/types/mate
+# Make xremap available for root (yeah, we should probably get it packaged
+# properly).
+sudo ln --symbolic --force $HOME/.cargo/bin/xremap /usr/local/bin/xremap
+
+sudo install --mode=644 $HOME/.materialize/artifacts/neo/xremap.yml /etc/xremap.yml
+sudo install --mode=644 $HOME/.materialize/artifacts/neo/xremap.service /etc/systemd/system/xremap.service
+sudo systemctl daemon-reload
+sudo systemctl enable --now xremap.service
 
 # keymap
 sudo mv /etc/default/keyboard /etc/default/keyboard.mate
@@ -30,7 +26,7 @@ cmp --silent /etc/default/keyboard /etc/default/keyboard.mate \
 
 # gnome configuration
 if dpkg -s gsettings-desktop-schemas &>/dev/null; then
-	gsettings set org.gnome.desktop.input-sources xkb-options "['mate:neo_hacks', 'altwin:swap_lalt_lwin']"
+	gsettings set org.gnome.desktop.input-sources xkb-options "[]"
 	gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
 	gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "[]"
 	gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Super>Tab']"
