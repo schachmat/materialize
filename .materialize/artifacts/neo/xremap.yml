@@ -1,18 +1,12 @@
-modmap:
-  - name: Swap L-Alt L-Win
-    remap:
-      Alt_L: Win_L
-      Win_L: Alt_L
 keymap:
   - name: Chrome
     exact_match: true
     remap:
-      Win_L-u: Alt-Left
-      Win_L-i: Alt-Right
-      Win_L-z: Ctrl-F4
-      Win_L-x: Ctrl-PageUp
-      Win_L-Shift-x: Ctrl-Shift-PageUp
-      Win_L-c: Ctrl-PageDown
-      Win_L-Shift-c: Ctrl-Shift-PageDown
-      Win_L-v: Alt-V # neo layout maps V key to P keysym
-      Win_L-b: Ctrl-L # neo layout maps L key to T keysym
+      Alt_L-u: Alt-Left
+      Alt_L-i: Alt-Right
+      Alt_L-z: Ctrl-F4
+      Alt_L-x: Ctrl-PageUp
+      Alt_L-Shift-x: Ctrl-Shift-PageUp
+      Alt_L-c: Ctrl-PageDown
+      Alt_L-Shift-c: Ctrl-Shift-PageDown
+      Alt_L-b: Ctrl-L # neo layout maps L key to T keysym

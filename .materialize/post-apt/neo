@@ -29,8 +29,10 @@ if dpkg -s gsettings-desktop-schemas &>/dev/null; then
 	gsettings set org.gnome.desktop.input-sources xkb-options "[]"
 	gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
 	gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "[]"
-	gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Super>Tab']"
-	gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Super>Tab']"
+	gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab','<Alt>l']"
+	gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Alt><Shift>Tab','<Alt><Shift>l']"
+	gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Alt>q']"
+	gsettings set org.gnome.shell.keybindings toggle-application-view "['<Alt>a']"
 	gsettings set org.gnome.mutter overlay-key ""
 fi
 
