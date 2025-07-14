@@ -3,8 +3,12 @@
 sudo apt-get -y install \
 	cargo \
 	console-setup \
+	gnome-settings-daemon-common \
+	gnome-shell-common \
 	kbd \
-	keyboard-configuration
+	keyboard-configuration \
+	libglib2.0-bin \
+	mutter-common
 
 cargo install --locked xremap --features gnome
 
