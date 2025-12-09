@@ -1,0 +1,33 @@
+#!/bin/sh
+
+#sudo apt-get -y install \
+#	cargo \
+#	mutter-common
+
+# gnome configuration
+if !dpkg -s gsettings-desktop-schemas &>/dev/null; then
+	echo ... Skipping Gnome dconf ...
+	exit 0
+fi
+
+gsettings set org.gnome.desktop.peripherals.mouse accel-profile "'flat'"
+gsettings set org.gnome.desktop.interface color-scheme "'prefer-dark'"
+gsettings set org.gnome.desktop.interface clock-format "'24h'"
+
+gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled "true"
+gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic "false"
+gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-from "23"
+gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-to "5"
+gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature "3700"
+
+# Disable unwanted gnome shell extensions
+gsettings set org.gnome.shell enabled-extensions "$( \
+gsettings get org.gnome.shell enabled-extensions | sed \
+	-e "s/'apps-menu@gnome-shell-extensions.gcampax.github.com'//g" \
+	-e "s/'dash-to-panel@jderose9.github.com'//g" \
+	-e "s/'launch-new-instance@gnome-shell-extensions.gcampax.github.com'//g" \
+	-e "s/'ubuntu-appindicators@ubuntu.com'//g" \
+	-e 's/, *,/, /g' \
+	-e 's/\[[, ]*/[/g' \
+	-e 's/[, ]*]/]/g' \
+)"
