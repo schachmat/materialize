@@ -1,0 +1,34 @@
+#!/bin/bash
+
+PROFILE_UUID=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
+SCHEMA="org.gnome.Terminal.Legacy.Profile"
+PROFILE_PATH="/org/gnome/terminal/legacy/profiles:/:${PROFILE_UUID}/"
+SCHEMA_PATH="${SCHEMA}:${PROFILE_PATH}"
+
+DARK="[\
+'#181849495656', '#fafa57575050', '#7575b9b93838', '#dbdbb3b32d2d', \
+'#46469595f7f7', '#f2f27575bebe', '#4141c7c7b9b9', '#727289898f8f', \
+'#2d2d5b5b6969', '#ffff66665c5c', '#8484c7c74747', '#ebebc1c13d3d', \
+'#5858a3a3ffff', '#ffff8484cdcd', '#5353d6d6c7c7', '#cacad8d8d9d9']"
+
+WHITE="[\
+'#ebebebebebeb', '#d6d600000c0c', '#1d1d97970000', '#c4c497970000', \
+'#00006464e4e4', '#dddd0f0f9d9d', '#0000adad9c9c', '#878787878787', \
+'#cdcdcdcdcdcd', '#bfbf00000000', '#000084840000', '#afaf85850000', \
+'#00005454cfcf', '#c7c700008b8b', '#00009a9a8a8a', '#282828282828']"
+
+gsettings monitor org.gnome.desktop.interface color-scheme | while read -r line; do
+    if [[ "$line" =~ "prefer-dark" ]]; then
+		echo Switching gnome-terminal to selenized dark
+		gsettings set "$SCHEMA_PATH" palette "$DARK"
+		gsettings set "$SCHEMA_PATH" foreground-color "'#adadbcbcbcbc'"
+		gsettings set "$SCHEMA_PATH" background-color "'#10103c3c4848'"
+		gsettings set "$SCHEMA_PATH" bold-color "'#cacad8d8d9d9'"
+    else
+		echo Switching gnome-terminal to selenized white
+		gsettings set "$SCHEMA_PATH" palette "$WHITE"
+		gsettings set "$SCHEMA_PATH" foreground-color "'#474747474747'"
+		gsettings set "$SCHEMA_PATH" background-color "'#ffffffffffff'"
+		gsettings set "$SCHEMA_PATH" bold-color "'#282828282828'"
+    fi
+done

@@ -1,0 +1,13 @@
+[Unit]
+Description=Gnome Terminal Theme Watcher (Selenized Dark/White)
+# Wait for the graphical session to be ready (crucial for dconf/gsettings)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=%h/bin/gnome-terminal-theme-watcher
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

@@ -266,6 +266,6 @@ endif
 
 " set colorscheme
 set t_Co=16
-colorscheme solarized
+colorscheme selenized
 highlight WordUnderCursor cterm=bold ctermfg=7
 

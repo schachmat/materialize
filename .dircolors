@@ -32,6 +32,7 @@ TERM terminator
 TERM tmux*
 TERM vt100
 TERM xterm*
+
 # Below are the color init strings for the basic file types. A color init
 # string consists of one or more of the following numeric codes:
 # Attribute codes:
@@ -41,195 +42,185 @@ TERM xterm*
 # Background color codes:
 # 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
 #
-#
-# 256 color support
-# see here: http://www.mail-archive.com/bug-coreutils@gnu.org/msg11030.html)
-#
-# Text 256 color coding:
-# 38;5;COLOR_NUMBER
-# Background 256 color coding:
-# 48;5;COLOR_NUMBER
+# Selenized ANSI color mapping applied.
 
 ## Special files
 
-NORMAL 00;38;5;244 # no color code at all
+NORMAL 00 # no color code at all
 #FILE 00 # regular file: use no color at all
 RESET 0 # reset to "normal" color
-DIR 00;38;5;33 # directory 01;34
-LINK 01;38;5;37 # symbolic link. (If you set this to 'target' instead of a
- # numerical value, the color is as for the file pointed to.)
+DIR 01;34 # directory (Bold Blue)
+LINK 01;36 # symbolic link (Bold Cyan)
 MULTIHARDLINK 00 # regular file with more than one link
-FIFO 48;5;230;38;5;136;01 # pipe
-SOCK 48;5;230;38;5;136;01 # socket
-DOOR 48;5;230;38;5;136;01 # door
-BLK 48;5;230;38;5;244;01 # block device driver
-CHR 48;5;230;38;5;244;01 # character device driver
-ORPHAN 48;5;235;38;5;160 # symlink to nonexistent file, or non-stat'able file
-SETUID 48;5;160;38;5;230 # file that is setuid (u+s)
-SETGID 48;5;136;38;5;230 # file that is setgid (g+s)
+FIFO 30;43 # pipe (Black text on Yellow bg)
+SOCK 30;43 # socket (Black text on Yellow bg)
+DOOR 30;43 # door (Black text on Yellow bg)
+BLK 30;47 # block device driver (Black text on White bg)
+CHR 30;47 # character device driver (Black text on White bg)
+ORPHAN 01;30;41 # symlink to nonexistent file (Bold Red)
+SETUID 01;41 # file that is setuid (Bold White text on Red bg)
+SETGID 30;43 # file that is setgid (Black text on Yellow bg)
 CAPABILITY 30;41 # file with capability
-STICKY_OTHER_WRITABLE 48;5;64;38;5;230 # dir that is sticky and other-writable (+t,o+w)
-OTHER_WRITABLE 48;5;235;38;5;33 # dir that is other-writable (o+w) and not sticky
-STICKY 48;5;33;38;5;230 # dir with the sticky bit set (+t) and not other-writable
+STICKY_OTHER_WRITABLE 30;42 # dir that is sticky and other-writable (Black text on Green bg)
+OTHER_WRITABLE 34;42 # dir that is other-writable (Blue text on Green bg)
+STICKY 97;44 # dir with the sticky bit set (Bright White text on Blue bg)
 # This is for files with execute permission:
-EXEC 01;38;5;64
+EXEC 01;32
 
-## Archives or compressed (violet + bold for compression)
-.tar    00;38;5;61
-.tgz    01;38;5;61
-.arj    01;38;5;61
-.taz    01;38;5;61
-.lzh    01;38;5;61
-.lzma   01;38;5;61
-.tlz    01;38;5;61
-.txz    01;38;5;61
-.zip    01;38;5;61
-.z      01;38;5;61
-.Z      01;38;5;61
-.dz     01;38;5;61
-.gz     01;38;5;61
-.lz     01;38;5;61
-.xz     01;38;5;61
-.bz2    01;38;5;61
-.bz     01;38;5;61
-.tbz    01;38;5;61
-.tbz2   01;38;5;61
-.tz     01;38;5;61
-.deb    01;38;5;61
-.rpm    01;38;5;61
-.jar    01;38;5;61
-.rar    01;38;5;61
-.ace    01;38;5;61
-.zoo    01;38;5;61
-.cpio   01;38;5;61
-.7z     01;38;5;61
-.rz     01;38;5;61
-.apk    01;38;5;61
-.gem    01;38;5;61
+## Archives or compressed (Magenta)
+.tar    00;35
+.tgz    01;35
+.arj    01;35
+.taz    01;35
+.lzh    01;35
+.lzma   01;35
+.tlz    01;35
+.txz    01;35
+.zip    01;35
+.z      01;35
+.Z      01;35
+.dz     01;35
+.gz     01;35
+.lz     01;35
+.xz     01;35
+.bz2    01;35
+.bz     01;35
+.tbz    01;35
+.tbz2   01;35
+.tz     01;35
+.deb    01;35
+.rpm    01;35
+.jar    01;35
+.rar    01;35
+.ace    01;35
+.zoo    01;35
+.cpio   01;35
+.7z     01;35
+.rz     01;35
+.apk    01;35
+.gem    01;35
 
-# Image formats (yellow)
-.jpg    00;38;5;136
-.JPG    00;38;5;136 #stupid but needed
-.jpeg   00;38;5;136
-.gif    00;38;5;136
-.bmp    00;38;5;136
-.pbm    00;38;5;136
-.pgm    00;38;5;136
-.ppm    00;38;5;136
-.tga    00;38;5;136
-.xbm    00;38;5;136
-.xpm    00;38;5;136
-.tif    00;38;5;136
-.tiff   00;38;5;136
-.png    00;38;5;136
-.svg    00;38;5;136
-.svgz   00;38;5;136
-.mng    00;38;5;136
-.pcx    00;38;5;136
-.dl     00;38;5;136
-.xcf    00;38;5;136
-.xwd    00;38;5;136
-.yuv    00;38;5;136
-.cgm    00;38;5;136
-.emf    00;38;5;136
-.eps    00;38;5;136
-.CR2    00;38;5;136
-.ico    00;38;5;136
+# Image formats (Yellow)
+.jpg    00;33
+.JPG    00;33 #stupid but needed
+.jpeg   00;33
+.gif    00;33
+.bmp    00;33
+.pbm    00;33
+.pgm    00;33
+.ppm    00;33
+.tga    00;33
+.xbm    00;33
+.xpm    00;33
+.tif    00;33
+.tiff   00;33
+.png    00;33
+.svg    00;33
+.svgz   00;33
+.mng    00;33
+.pcx    00;33
+.dl     00;33
+.xcf    00;33
+.xwd    00;33
+.yuv    00;33
+.cgm    00;33
+.emf    00;33
+.eps    00;33
+.CR2    00;33
+.ico    00;33
 
-# Files of special interest (base1 + bold)
-.tex             01;38;5;245
-.rdf             01;38;5;245
-.owl             01;38;5;245
-.n3              01;38;5;245
-.ttl             01;38;5;245
-.nt              01;38;5;245
-.torrent         01;38;5;245
-.xml             01;38;5;245
-*Makefile        01;38;5;245
-*Rakefile        01;38;5;245
-*build.xml       01;38;5;245
-*rc              01;38;5;245
-*1               01;38;5;245
-.nfo             01;38;5;245
-*README          01;38;5;245
-*README.txt      01;38;5;245
-*readme.txt      01;38;5;245
-.md              01;38;5;245
-*README.markdown 01;38;5;245
-.ini             01;38;5;245
-.yml             01;38;5;245
-.cfg             01;38;5;245
-.conf            01;38;5;245
-.c               01;38;5;245
-.cpp             01;38;5;245
-.cc              01;38;5;245
+# Files of special interest (White / Bright text)
+.tex             01;37
+.rdf             01;37
+.owl             01;37
+.n3              01;37
+.ttl             01;37
+.nt              01;37
+.torrent         01;37
+.xml             01;37
+*Makefile        01;37
+*Rakefile        01;37
+*build.xml       01;37
+*rc              01;37
+*1               01;37
+.nfo             01;37
+*README          01;37
+*README.txt      01;37
+*readme.txt      01;37
+.md              01;37
+*README.markdown 01;37
+.ini             01;37
+.yml             01;37
+.cfg             01;37
+.conf            01;37
+.c               01;37
+.cpp             01;37
+.cc              01;37
 
-# "unimportant" files as logs and backups (base01)
-.log        00;38;5;240
-.bak        00;38;5;240
-.aux        00;38;5;240
-.bbl        00;38;5;240
-.blg        00;38;5;240
-*~          00;38;5;240
-*#          00;38;5;240
-.part       00;38;5;240
-.incomplete 00;38;5;240
-.swp        00;38;5;240
-.tmp        00;38;5;240
-.temp       00;38;5;240
-.o          00;38;5;240
-.pyc        00;38;5;240
-.class      00;38;5;240
-.cache      00;38;5;240
+# "unimportant" files as logs and backups (Grey with low contrast)
+.log        00;37
+.bak        00;37
+.aux        00;37
+.bbl        00;37
+.blg        00;37
+*~          00;37
+*#          00;37
+.part       00;37
+.incomplete 00;37
+.swp        00;37
+.tmp        00;37
+.temp       00;37
+.o          00;37
+.pyc        00;37
+.class      00;37
+.cache      00;37
 
-# Audio formats (orange)
-.aac    00;38;5;166
-.au     00;38;5;166
-.flac   00;38;5;166
-.mid    00;38;5;166
-.midi   00;38;5;166
-.mka    00;38;5;166
-.mp3    00;38;5;166
-.mpc    00;38;5;166
-.ogg    00;38;5;166
-.ra     00;38;5;166
-.wav    00;38;5;166
-.m4a    00;38;5;166
+# Audio formats (Bold Yellow - as closest approx to Orange)
+.aac    01;33
+.au     01;33
+.flac   01;33
+.mid    01;33
+.midi   01;33
+.mka    01;33
+.mp3    01;33
+.mpc    01;33
+.ogg    01;33
+.ra     01;33
+.wav    01;33
+.m4a    01;33
 # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
-.axa    00;38;5;166
-.oga    00;38;5;166
-.spx    00;38;5;166
-.xspf   00;38;5;166
+.axa    01;33
+.oga    01;33
+.spx    01;33
+.xspf   01;33
 
-# Video formats (as audio + bold)
-.mov    01;38;5;166
-.mpg    01;38;5;166
-.mpeg   01;38;5;166
-.m2v    01;38;5;166
-.mkv    01;38;5;166
-.ogm    01;38;5;166
-.mp4    01;38;5;166
-.m4v    01;38;5;166
-.mp4v   01;38;5;166
-.vob    01;38;5;166
-.qt     01;38;5;166
-.nuv    01;38;5;166
-.wmv    01;38;5;166
-.asf    01;38;5;166
-.rm     01;38;5;166
-.rmvb   01;38;5;166
-.flc    01;38;5;166
-.avi    01;38;5;166
-.fli    01;38;5;166
-.flv    01;38;5;166
-.gl     01;38;5;166
-.m2ts   01;38;5;166
-.divx   01;38;5;166
-.webm   01;38;5;166
+# Video formats (Bold Red - as closest approx to Bold Orange)
+.mov    01;31
+.mpg    01;31
+.mpeg   01;31
+.m2v    01;31
+.mkv    01;31
+.ogm    01;31
+.mp4    01;31
+.m4v    01;31
+.mp4v   01;31
+.vob    01;31
+.qt     01;31
+.nuv    01;31
+.wmv    01;31
+.asf    01;31
+.rm     01;31
+.rmvb   01;31
+.flc    01;31
+.avi    01;31
+.fli    01;31
+.flv    01;31
+.gl     01;31
+.m2ts   01;31
+.divx   01;31
+.webm   01;31
 # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
-.axv 01;38;5;166
-.anx 01;38;5;166
-.ogv 01;38;5;166
-.ogx 01;38;5;166
-
-
+.axv    01;31
+.anx    01;31
+.ogv    01;31
+.ogx    01;31

@@ -1,14 +1,6 @@
 #!/bin/sh
 
-#sudo apt-get -y install \
-#	cargo \
-#	mutter-common
-
-# gnome configuration
-if !dpkg -s gsettings-desktop-schemas &>/dev/null; then
-	echo ... Skipping Gnome dconf ...
-	exit 0
-fi
+sudo apt-get -y install gsettings-desktop-schemas
 
 gsettings set org.gnome.desktop.peripherals.mouse accel-profile "'flat'"
 gsettings set org.gnome.desktop.interface color-scheme "'prefer-dark'"
@@ -31,3 +23,27 @@ gsettings get org.gnome.shell enabled-extensions | sed \
 	-e 's/\[[, ]*/[/g' \
 	-e 's/[, ]*]/]/g' \
 )"
+
+# Configure gnome-terminal color scheme in default profile
+PROFILE_UUID=$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "'")
+SCHEMA="org.gnome.Terminal.Legacy.Profile"
+PROFILE_PATH="/org/gnome/terminal/legacy/profiles:/:${PROFILE_UUID}/"
+SCHEMA_PATH="${SCHEMA}:${PROFILE_PATH}"
+
+PALETTE="[\
+'#181849495656', '#fafa57575050', '#7575b9b93838', '#dbdbb3b32d2d', \
+'#46469595f7f7', '#f2f27575bebe', '#4141c7c7b9b9', '#727289898f8f', \
+'#2d2d5b5b6969', '#ffff66665c5c', '#8484c7c74747', '#ebebc1c13d3d', \
+'#5858a3a3ffff', '#ffff8484cdcd', '#5353d6d6c7c7', '#cacad8d8d9d9']"
+
+gsettings set "$SCHEMA_PATH" palette "$PALETTE"
+gsettings set "$SCHEMA_PATH" foreground-color "'#adadbcbcbcbc'"
+gsettings set "$SCHEMA_PATH" background-color "'#10103c3c4848'"
+gsettings set "$SCHEMA_PATH" bold-color "'#cacad8d8d9d9'"
+gsettings set "$SCHEMA_PATH" bold-color-same-as-fg "false"
+gsettings set "$SCHEMA_PATH" use-theme-colors "false"
+
+# Configure automatic dark mode switcher for gnome-terminal based on system
+# setting
+systemctl --user daemon-reload
+systemctl --user enable --now gnome-terminal-theme-watcher.service
