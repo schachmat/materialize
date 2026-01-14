@@ -17,8 +17,8 @@ WHITE="[\
 '#cdcdcdcdcdcd', '#bfbf00000000', '#000084840000', '#afaf85850000', \
 '#00005454cfcf', '#c7c700008b8b', '#00009a9a8a8a', '#282828282828']"
 
-gsettings monitor org.gnome.desktop.interface color-scheme | while read -r line; do
-    if [[ "$line" =~ "prefer-dark" ]]; then
+apply_theme() {
+    if [[ "$1" =~ "prefer-dark" ]]; then
 		echo Switching gnome-terminal to selenized dark
 		gsettings set "$SCHEMA_PATH" palette "$DARK"
 		gsettings set "$SCHEMA_PATH" foreground-color "'#adadbcbcbcbc'"
@@ -31,4 +31,10 @@ gsettings monitor org.gnome.desktop.interface color-scheme | while read -r line;
 		gsettings set "$SCHEMA_PATH" background-color "'#ffffffffffff'"
 		gsettings set "$SCHEMA_PATH" bold-color "'#282828282828'"
     fi
+}
+
+apply_theme "$(gsettings get org.gnome.desktop.interface color-scheme)"
+
+gsettings monitor org.gnome.desktop.interface color-scheme | while read -r line; do
+	apply_theme "$line"
 done
