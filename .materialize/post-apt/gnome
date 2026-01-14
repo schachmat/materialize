@@ -2,6 +2,9 @@
 
 sudo apt-get -y install gsettings-desktop-schemas
 
+gsettings set org.gnome.desktop.interface enable-hot-corners "false"
+gsettings set org.gnome.mutter dynamic-workspaces "false"
+gsettings set org.gnome.desktop.wm.preferences num-workspaces "1"
 gsettings set org.gnome.desktop.peripherals.mouse accel-profile "'flat'"
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
 #gsettings set org.gnome.desktop.interface color-scheme "'prefer-dark'"
