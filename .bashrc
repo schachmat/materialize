@@ -146,3 +146,11 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# configure roadwarrior
+AUTH_SSH_CERTIFICATION=false
+AUTH_X11_FORWARDING=true
+AUTH_GMOSH=true
+AUTH_TMUX=true
+AUTH_CHECK_REMAINING=true
+AUTH_ENSURE_CLOUDTOP_ON=true
