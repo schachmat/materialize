@@ -148,9 +148,9 @@ if ! shopt -oq posix; then
 fi
 
 # configure roadwarrior
-AUTH_SSH_CERTIFICATION=false
-AUTH_X11_FORWARDING=true
-AUTH_GMOSH=true
-AUTH_TMUX=true
-AUTH_CHECK_REMAINING=true
-AUTH_ENSURE_CLOUDTOP_ON=true
+export AUTH_SSH_CERTIFICATION=false
+export AUTH_X11_FORWARDING=true
+export AUTH_GMOSH=true
+export AUTH_TMUX=true
+export AUTH_CHECK_REMAINING=true
+export AUTH_ENSURE_CLOUDTOP_ON=true
