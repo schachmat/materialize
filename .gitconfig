@@ -17,6 +17,9 @@
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
 
+[url "git@ssh.gitlab.freedesktop.org:"]
+	pushInsteadOf = https://gitlab.freedesktop.org/
+
 [url "ssh://suckless:/gitrepos/"]
 	pushInsteadOf = https://git.suckless.org/
 
